@@ -17,7 +17,7 @@ left_region = [
     [sg.Button('Registrar compra', key='compra', button_color=('black', 'forest green'))]
 ]
 right_region = [
-    [sg.T('This is some random text')]
+    [sg.T('Here we expect the graph rep of the ticket')]
 ]
 layout = [
     title_region,
