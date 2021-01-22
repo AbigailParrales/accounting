@@ -15,3 +15,6 @@ class Venta():
         info.append(self.pUnit)
         info.append(self.pTotalNum)
         return info
+
+    def getImporteVenta(self):
+        return self.pTotalNum
