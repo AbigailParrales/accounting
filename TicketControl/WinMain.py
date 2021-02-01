@@ -3,6 +3,7 @@ import PySimpleGUI as sg
 
 # Our packages
 from Nota import Nota
+from WinNota import WinNota
 import tools
 
 class WinMain():
@@ -22,9 +23,27 @@ class WinMain():
          background_color=tools.BACKGROUND,
          element_justification='c')
 
+        self.state = 'NEW'
+        self.winNota = None
+        self.nota = None
+
     def display(self):
-        while True:
+        self.state = 'DISPLAYING'
+        while self.state != 'CLOSE':
             event, values = self.window.read()
-            if event == sg.WINDOW_CLOSED or event == 'start':
-                break
-        
+            if event == 'start':
+                self.state = 'CREATING_NOTA'
+                self.window.Hide()
+                self.nota = Nota()
+                self.winNota = WinNota(self.nota)
+                while self.winNota.display() != 'WIN_CLOSED':
+                    pass
+                self.state = 'END_NOTA'
+                self.winNota.endNote()
+                self.window.UnHide()
+            if event == sg.WINDOW_CLOSED:
+                self.state = 'CLOSE'
+
+        # Loop breaked, state = CLOSE
+        self.window.close()
+        self.winNota = None
