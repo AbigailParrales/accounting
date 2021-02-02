@@ -15,7 +15,7 @@ class Nota():
         else:
             self.fecha = datetime.date.today()
 
-        self.headers=["Cantidad", "Descripcion", "Precio Unitario", "Importe"]
+        self.headers=["CANT", "DESCRIPCION", "P. UNIT", "IMPORTE"]
 
         self.ventas = []
         self.cantidades = [self.headers[0]]
@@ -54,4 +54,16 @@ class Nota():
             return sum(self.importes[1:])
     
     def __str__(self):
-        return tabulate(self.ventas, self.headers)
+        razonSocial = "Madereria Tlalpujahua\n"
+        domicilio = "PERIFERICO ORIENTE No.3A C.P.45403\nCOL. JALISCO TONALA, JAL\n"
+        telefono = "TEL: 3312098065\n"
+        dia = self.fecha.strftime("%d/%m/%y")
+        hora = self.fecha.strftime("%H:%M")
+        
+        encabezado = razonSocial + domicilio + telefono + "==========================\n" + f"Fecha: {dia}\tHora: {hora}\n"
+        tablaArticulos = tabulate(self.ventas, self.headers) + f"\n==========================\n"
+        total = f"TOTAL: {self.totalNota}"
+
+        notaStr = encabezado + tablaArticulos + total
+        
+        return notaStr
