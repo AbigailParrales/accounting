@@ -1,0 +1,24 @@
+{
+    "PESO_MEXICANO" :{
+        "ISO": "MXN",
+        "NOMBRE_SINGULAR": "PESO",
+        "NOMBRE_PLURAL": "PESOS",
+        "FRACCION_SINGULAR": "CENTAVO",
+        "FRACCION_PLURAL": "CENTAVOS"
+    },
+    "BOLIVAR" :{
+        "ISO": "VES",
+        "NOMBRE_SINGULAR": "BOLIVAR",
+        "NOMBRE_PLURAL": "BOLIVARES",
+        "FRACCION_SINGULAR": "CENTIMO",
+        "FRACCION_PLURAL": "CENTIMOS"
+    },
+    "DOLAR_ESTADOUNIDENSE" :{
+        "ISO": "USD",
+        "NOMBRE_SINGULAR": "DOLAR",
+        "NOMBRE_PLURAL": "DOLARES",
+        "FRACCION_SINGULAR": "CENTAVO",
+        "FRACCION_PLURAL": "CENTAVOS"
+    }
+    
+}

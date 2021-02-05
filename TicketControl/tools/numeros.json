@@ -1,0 +1,54 @@
+{
+    "UNIDADES": [
+        "CERO",
+        "UN",
+        "DOS",
+        "TRES",
+        "CUATRO",
+        "CINCO",
+        "SEIS",
+        "SIETE",
+        "OCHO",
+        "NUEVE",
+        "DIEZ",
+        "ONCE",
+        "DOCE",
+        "TRECE",
+        "CATORCE",
+        "QUINCE",
+        "DIECISEIS",
+        "DIECISIETE",
+        "DIECIOCHO",
+        "DIECINUEVE",
+        "UNO"
+    ],
+    "DECENAS":[
+        "",
+        "VEINTE",
+        "VEINTI",
+        "TREINTA",
+        "CUARENTA",
+        "CINCUENTA",
+        "SESENTA",
+        "SETENTA",
+        "OCHENTA",
+        "NOVENTA"
+    ],
+    "CENTENAS": [
+        "CIEN",
+        "CIENTO",
+        "DOSCIENTOS",
+        "TRESCIENTOS",
+        "CUATROSCIENTOS",
+        "QUINIENTOS",
+        "SEISCIENTOS",
+        "SETECIENTOS",
+        "OCHOCIENTOS",
+        "NOVECIENTOS"
+    ],
+    "SUPERIORES": [
+        "MIL",
+        "MILLON",
+        "MILLONES"
+    ]
+}
