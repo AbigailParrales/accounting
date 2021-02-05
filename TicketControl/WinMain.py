@@ -4,23 +4,24 @@ import PySimpleGUI as sg
 # Our packages
 from Nota import Nota
 from WinNota import WinNota
-import tools
+from WinNotaConf import WinNotaConf
+import tools.fonts as fonts
 
 class WinMain():
     def __init__(self):
         layout = [
             [sg.Text("¡¡Bienvenido!!", 
-             text_color=tools.TITLE_COLOR_0, font = tools.TITLE_FONT_0, 
-             background_color=tools.BACKGROUND, justification = 'center')],
+             text_color=fonts.TITLE_COLOR_0, font = fonts.TITLE_FONT_0, 
+             background_color=fonts.BACKGROUND, justification = 'center')],
             [sg.Text("Si desea empezar una nota, de click en\n-Generar nota-", 
-             text_color=tools.TEXT_COLOR_0, font = tools.TEXT_FONT_0, 
-             background_color=tools.BACKGROUND, justification = 'center')],
-            [sg.Button("Generar nota", key = "start", button_color=tools.BUTTON_GOLD)]
+             text_color=fonts.TEXT_COLOR_0, font = fonts.TEXT_FONT_0, 
+             background_color=fonts.BACKGROUND, justification = 'center')],
+            [sg.Button("Generar nota", key = "start", button_color=fonts.BUTTON_GOLD)]
         ]
 
         self.window = sg.Window('Bienvenida', 
          layout,
-         background_color=tools.BACKGROUND,
+         background_color=fonts.BACKGROUND,
          element_justification='c')
 
         self.state = 'NEW'
@@ -34,7 +35,10 @@ class WinMain():
             if event == 'start':
                 self.state = 'CREATING_NOTA'
                 self.window.Hide()
-                self.nota = Nota()
+                
+                winNotaConf = WinNotaConf()
+                fechaNota, folioNota = winNotaConf.display()
+                self.nota = Nota(fechaNota, folioNota)
                 self.winNota = WinNota(self.nota)
                 while self.winNota.display() != 'WIN_CLOSED':
                     pass

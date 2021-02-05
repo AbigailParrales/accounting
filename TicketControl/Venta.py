@@ -3,7 +3,7 @@ class Venta():
         self.cantidad = cantidad
         self.descripcion = descripcion
         self.pUnit = pUnit
-        self.pTotalNum = self.cantidad * self.pUnit
+        self.pTotalNum = float(self.cantidad) * float(self.pUnit)
 
     def __str__(self):
         return f"{self.cantidad}\t{self.descripcion}\t{self.pUnit}\t{self.pTotalNum}"
@@ -12,8 +12,8 @@ class Venta():
         info = []
         info.append(self.cantidad)
         info.append(self.descripcion)
-        info.append(self.pUnit)
-        info.append(self.pTotalNum)
+        info.append("%.2f"%(self.pUnit))
+        info.append("%.2f"%(self.pTotalNum))
         return info
 
     def getImporteVenta(self):

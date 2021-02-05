@@ -2,10 +2,10 @@ import datetime
 from tabulate import tabulate
 
 from Venta import Venta
-
+import tools.numeroConLetra as n2s
 
 class Nota():
-    def __init__(self, fecha = None):
+    def __init__(self, fecha = None, folio = None):
         if fecha:
             dateHolder = fecha.split("-")
             nYear = int(dateHolder[0])
@@ -23,6 +23,7 @@ class Nota():
         self.pUnitarios = [self.headers[2]]
         self.importes = [self.headers[3]]
         self.totalNota = 0
+        self.folio = folio
         
 
     def registrarVenta(self, cantidad, descripcion, pUnit):
@@ -54,16 +55,22 @@ class Nota():
             return sum(self.importes[1:])
     
     def __str__(self):
-        razonSocial = "Madereria Tlalpujahua\n"
-        domicilio = "PERIFERICO ORIENTE No.3A C.P.45403\nCOL. JALISCO TONALA, JAL\n"
-        telefono = "TEL: 3312098065\n"
-        dia = self.fecha.strftime("%d/%m/%y")
-        hora = self.fecha.strftime("%H:%M")
-        
-        encabezado = razonSocial + domicilio + telefono + "==========================\n" + f"Fecha: {dia}\tHora: {hora}\n"
-        tablaArticulos = tabulate(self.ventas, self.headers) + f"\n==========================\n"
-        total = f"TOTAL: {self.totalNota}"
+        print('info: '+str(self.ventas))
 
-        notaStr = encabezado + tablaArticulos + total
+
+        titulo = "NOTA DE VENTA\n\n"
+        razonSocial = "MADERERIA TLALPUJAHUA\n"
+        domicilio = "Periferico oriente No.3A\nCol. Jalisco, Tonala, Jal  C.P.45403\n"
+        telefono = "\nTEL: 33 12 09 80 65\n"
+        dia = self.fecha.strftime("%d/%m/%y")
+        
+        encabezado = titulo + razonSocial + domicilio + telefono + f"Fecha: {dia}\n==========================\n"
+        # tablaArticulos = tabulate(self.ventas, self.headers,floatfmt=(None, None, '.2f', '.2f',)) + f"\n==========================\n"
+        tablaArticulos = tabulate(self.ventas, self.headers,floatfmt='.2f') + f"\n==========================\n"
+        total = "TOTAL: %.2f\n==========================\n"%(self.totalNota)
+        totalConLetra = n2s.writeNumber(int(self.totalNota))
+        decimales = str(round((self.totalNota%1)*100)) + '/100 M.N'
+
+        notaStr = encabezado + tablaArticulos + total + totalConLetra + ' ' + decimales
         
         return notaStr

@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
 
-import tools
+import tools.fonts as fonts
 
 class WinPrevNota():
     def __init__(self, nota):
@@ -17,7 +17,7 @@ class WinPrevNota():
 
         self.window = sg.Window(
             'Vista previa de la nota generada', layout=layout, 
-            background_color=tools.BACKGROUND)
+            background_color=fonts.BACKGROUND)
 
     def display(self):
         event, values = self.window.read()
